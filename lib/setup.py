@@ -36,6 +36,9 @@ INSTALL_REQUIRES = [
     # 1.4 introduced the functionality found in python 3.8's importlib.metadata module
     "importlib-metadata>=1.4",
     "numpy",
+    "babel",
+    "langcodes",
+    "language-data",
     "packaging>=14.1",
     "pandas<2,>=0.25",
     "pillow>=6.2.0",

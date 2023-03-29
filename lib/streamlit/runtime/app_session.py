@@ -20,6 +20,7 @@ from typing import TYPE_CHECKING, Callable, Dict, List, Optional, Union
 import streamlit.elements.exception as exception_utils
 from streamlit import config, runtime, source_util
 from streamlit.case_converters import to_snake_case
+from streamlit.locale import get_session_language
 from streamlit.logger import get_logger
 from streamlit.proto.BackMsg_pb2 import BackMsg
 from streamlit.proto.ClientState_pb2 import ClientState
@@ -142,6 +143,10 @@ class AppSession:
         from streamlit.runtime.state import SessionState
 
         self._session_state = SessionState()
+        self._session_state["browser_language"] = user_info.get("language")
+        self._session_state["language"] = get_session_language(
+            session_language_as_str=user_info.get("language")
+        )
         self._user_info = user_info
 
         self._debug_last_backmsg_id: Optional[str] = None
